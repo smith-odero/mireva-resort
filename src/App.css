@@ -1,0 +1,238 @@
+/* Puma breath animation */
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Breath smoke */
+.breath-particle {
+  position: absolute;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  filter: blur(1px);
+}
+
+.breath-1 {
+  width: 20px;
+  height: 15px;
+  left: -10px;
+  animation: smokeFlow 4s ease-out infinite;
+  animation-delay: 0s;
+}
+
+.breath-2 {
+  width: 25px;
+  height: 20px;
+  left: 0px;
+  animation: smokeFlow 4s ease-out infinite;
+  animation-delay: 0.8s;
+}
+
+.breath-3 {
+  width: 18px;
+  height: 14px;
+  left: 8px;
+  animation: smokeFlow 4s ease-out infinite;
+  animation-delay: 1.6s;
+}
+
+@keyframes smokeFlow {
+  0% {
+    opacity: 0;
+    transform: translateX(0) translateY(0) scale(0.3);
+    filter: blur(1px);
+  }
+  15% {
+    opacity: 0.8;
+    transform: translateX(8px) translateY(-2px) scale(0.6);
+    filter: blur(1.5px);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateX(25px) translateY(-8px) scale(1);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(50px) translateY(-20px) scale(1.8);
+    filter: blur(4px);
+  }
+}
+
+/* Carousel animations */
+.scale-102 {
+  transform: scale(1.02);
+}
+
+/* Smooth transitions for carousel */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+/* Custom hover effects for carousel buttons */
+.carousel-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Fade in animation for active suite content */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Globe rotation animation */
+.animate-rotate-slow {
+  animation: rotateSlow 20s linear infinite;
+}
+
+@keyframes rotateSlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Modern smooth animations */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes staggerIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation utility classes */
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.6s ease-out forwards;
+}
+
+.animate-slide-in-down {
+  animation: slideInDown 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+.animate-stagger {
+  opacity: 0;
+  animation: staggerIn 0.6s ease-out forwards;
+}
+
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.15s; }
+.animate-delay-300 { animation-delay: 0.2s; }
+
+/* Hover animations */
+.hover-scale:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  transition: box-shadow 0.3s ease;
+}
