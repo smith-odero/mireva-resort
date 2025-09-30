@@ -4,7 +4,7 @@ import images from '../utils/images';
 
 const ReusableFooter = () => {
     return (
-        <footer className='bg-black text-white pb-10 pt-12 px-4 md:px-8'>
+        <footer className='bg-black text-white pb-10 pt-12 mt-50 px-4 md:px-8'>
             <div className='max-w-7xl mx-auto'>
                 {/* Main footer content */}
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12'>
