@@ -107,9 +107,9 @@ const Suite1 = () => {
                 {/* Main Content */}
                 <main className="max-w-7xl mx-auto px-4 pt-10 sm:px-6 lg:px-8">
                     
-                    {/* Image Gallery */}
-                    <div className="relative mb-8">
-                        <div className="relative h-96 md:h-[500px] rounded-sm overflow-hidden">
+                    {/* Image Gallery - Full width on mobile */}
+                    <div className="relative mb-8 -mx-4 sm:mx-0">
+                        <div className="relative h-96 md:h-[500px] sm:rounded-sm overflow-hidden">
                             <img 
                                 src={propertyImages[currentImageIndex]}
                                 alt={property.title}
@@ -145,7 +145,7 @@ const Suite1 = () => {
                         </div>
 
                         {/* Thumbnail Strip */}
-                        <div className="flex gap-2 mt-4 overflow-x-auto">
+                        <div className="flex gap-2 mt-4 overflow-x-auto px-4 sm:px-0">
                             {propertyImages.map((image, index) => (
                                 <button
                                     key={index}
