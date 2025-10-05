@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
 import Suite from './components/Suite'
+import Suite1 from './components/Suite1'
 import About from './components/About'
 import Contact from './components/Contact'
 import Dining from './components/Dining'
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/suites' element={<Suite />} />
+        <Route path='/suites/:propertyName' element={<Suite1 />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/dining' element={<Dining />} />

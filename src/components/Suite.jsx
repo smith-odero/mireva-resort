@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ReusableNavbar from './ReusableNavbar'
 import ReusableFooter from './ReusableFooter';
 import { ChevronDownIcon, ChevronDown, ChevronLeft, ChevronRight, FilterIcon, Search, Heart, Bed, Bath, Square  } from 'lucide-react';
@@ -6,6 +7,7 @@ import images from '../utils/images.js'
 
 
 const Suite = () => {
+    const navigate = useNavigate();
 
     {/* Search Bar */}
     const [searchTerm, setSearchTerm] = useState('');
@@ -208,16 +210,36 @@ const Suite = () => {
         handlePageChange(currentPage + 1);
       }
     };
+
+    // Function to handle property click and navigate to individual property page
+    const handlePropertyClick = (property) => {
+      // Convert property title to URL-friendly slug
+      const propertySlug = property.title.toLowerCase()
+        .replace(/[^\w\s]/g, '') // Remove special characters
+        .replace(/\s+/g, '-') // Replace spaces with hyphens
+        .trim();
+      
+      // Navigate to the property detail page with the property data
+      navigate(`/suites/${propertySlug}`, { state: { property } });
+    };
   
     const PropertyCard = ({ property }) => (
-      <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
+      <div 
+        className="bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105"
+        onClick={() => handlePropertyClick(property)}
+      >
         <div className="relative">
           <img 
             src={property.image} 
             alt={property.title}
             className="w-full h-48 object-cover"
           />
-          <button className="absolute top-3 right-3 p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-colors">
+          <button 
+            className="absolute top-3 right-3 p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-colors z-10"
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent card click when heart is clicked
+            }}
+          >
             <Heart className="w-4 h-4 text-gray-600" />
           </button>
           {property.featured && (
@@ -228,15 +250,14 @@ const Suite = () => {
         </div>
         
         <div className="p-5">
-          <div   className="flex  -baseline gap-1 mb-2">
+          <div className="flex -baseline gap-1 mb-2">
             <span className="text-2xl font-semibold text-blue-600">{property.price}</span>
             <span className="text-gray-500 text-sm">{property.period}</span>
           </div>
-
-
           
-          
-          <h3 className="font-light font-serif tracking-wider text-xl text-gray-900 mb-1">{property.title}</h3>
+          <h3 className="font-light font-serif tracking-wider text-xl text-gray-900 mb-1 hover:text-blue-600 transition-colors">
+            {property.title}
+          </h3>
           <p className="text-gray-500 text-sm mb-4">{property.address}</p>
           
           <div className="flex items-center gap-4 text-sm text-gray-600">
@@ -254,8 +275,8 @@ const Suite = () => {
             </div>
           </div>
         </div>
-        </div>
-        )
+      </div>
+    )
         {/* ======================= */}
         {/* ========--------======= */}
         {/* ======================= */} 
@@ -266,7 +287,7 @@ const Suite = () => {
             {/* Search Bar */}
             <div className='w-full max-w-4xl mx-auto p-4'>
                 <div>
-                    <div className='hidden md:flex mt-25 items-center bg-white border border-gray-300 rounded-xl shadow-sm hover:shadow-xl transition-shadow duration-300 focus-within:border-blue-400/70'>
+                    <div className='hidden md:flex mt-25 items-center bg-white border border-gray-300 rounded-sm shadow-sm hover:shadow-xl transition-shadow duration-300 focus-within:border-blue-400/70'>
 
                         {/* Left Dropdown - Categories */}
                         <div className='relative'>
@@ -354,7 +375,7 @@ const Suite = () => {
                         <button
                             type='button'
                             onClick={handleSearch}
-                            className='px-6 py-3 bg-blue-700/80 text-white rounded-r-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200'
+                            className='px-6 mr-0.5 py-3 bg-blue-700/80 text-white rounded-r-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200'
                         >
                             <Search className="h-5 w-5"/>
                         </button>

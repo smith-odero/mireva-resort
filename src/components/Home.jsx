@@ -200,7 +200,7 @@ const Home = () => {
                 </div>
 
             {/* Navigation */}
-            <nav className={`fixed top-0 w-full transition-all duration-500 z-[99995] flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4 ${
+            <nav className={`fixed top-0 w-full text-gray-50 transition-all duration-500 z-[99995] flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4 ${
                 scrollDirection === 'up' && lastScrollY > 50 
                     ? 'translate-y-0 bg-black/35 backdrop-blur-xl shadow-2xl h-[50px] lg:h-[60px]' 
                     : scrollDirection === 'down' && lastScrollY > 50
@@ -223,11 +223,11 @@ const Home = () => {
                             <div className='breath-particle breath-3'></div>
                         </div>
                     </div>
-                    <Link to='/' ><h2 className='text-lg sm:text-xl text-white font-light tracking-wider'>Mireva.</h2> </Link>
+                    <Link to='/' ><h2 className='text-lg sm:text-xl font-light tracking-wider'>Mireva.</h2> </Link>
                 </div>
 
                 {/* Desktop navigation */}
-                <div className='hidden md:flex items-center space-x-6 lg:space-x-8 text-white font-light'>
+                <div className='hidden md:flex items-center space-x-6 lg:space-x-8 font-light'>
                     <Link to='/about' className='transition-opacity hover:opacity-70'>About</Link>
                     <Link to='/suites' className='transition-opacity hover:opacity-70'>Suites</Link>
                     <Link to='/dining' className='transition-opacity hover:opacity-70'>Dining</Link>
@@ -1061,7 +1061,7 @@ const Home = () => {
 
             <footer 
                 data-animate-id="footer"
-                className={getAnimationClass("footer", 'bg-black text-white pb-10 pt-12 px-4 md:px-8', 'animate-slide-in-up')}
+                className={getAnimationClass("footer", 'bg-gray-50 text-black pb-10 pt-12 px-4 md:px-8', 'animate-slide-in-up')}
             >
                 <div className='max-w-7xl mx-auto'>
                     {/* Main footer content */}
@@ -1076,7 +1076,7 @@ const Home = () => {
                                     <img
                                         src={images["logo.png"]}
                                         alt="Logo"
-                                        className='h-12 w-12 object-cover animate-breathe'
+                                        className='h-12 w-12 bg-black rounded-xl object-cover animate-breathe'
                                     />
                                     {/* Breath animation elements from mouth */}
                                     <div className='absolute top-4 left-10 transform -translate-x-1/2'>
@@ -1085,32 +1085,32 @@ const Home = () => {
                                         <div className='breath-particle breath-3'></div>
                                     </div>
                                 </div>
-                                <h2 className='text-xl text-white font-light tracking-wider'>Mireva</h2>
+                                <h2 className='text-xl font-light tracking-wider'>Mireva</h2>
                             </div>
                             
                             {/* Social Media Icons */}
                             <div className='mb-6'>
-                                <h3 className='text-sm font-semibold mb-4 text-gray-50'>FOLLOW US</h3>
+                                <h3 className='text-sm font-semibold mb-4 '>FOLLOW US</h3>
                                 <div className='flex space-x-4'>
-                                    <a href='#' className='text-gray-50 hover:text-white transition-colors duration-300 text-xl'>
+                                    <a href='#' className='text-xl'>
                                         <FaFacebook/>
                                     </a>
-                                    <a href='#' className='text-gray-50 hover:text-white transition-colors duration-300 text-xl'>
+                                    <a href='#' className='text-xl'>
                                         <FaInstagram/>
                                     </a>
-                                    <a href='#' className='text-gray-50 hover:text-white transition-colors duration-300 text-xl'>
+                                    <a href='#' className='text-xl'>
                                         <FaWhatsapp/>
                                     </a>
-                                    <a href='#' className='text-gray-50 hover:text-white transition-colors duration-300 text-xl'>
+                                    <a href='#' className='text-xl'>
                                         <FaTiktok/>
                                     </a>
-                                    <a href='#' className='text-gray-50 hover:text-white transition-colors duration-300 text-xl'>
+                                    <a href='#' className='text-xl'>
                                         <FaYoutube/>
                                     </a>
                                 </div>
                             </div>
                             
-                            <p className='text-gray-50 text-sm leading-relaxed'>
+                            <p className=' text-sm leading-relaxed'>
                                 Experience luxury in harmony with nature. Mireva Resort offers an escape from the ordinary.
                             </p>
                         </div>
@@ -1121,30 +1121,30 @@ const Home = () => {
                         {/* Contact, Quick Links, and Legal Notice - Right side */}
                         <div className='lg:col-span-6 grid grid-cols-1 md:grid-cols-3 gap-8'>
                             <div>
-                                <h3 className='font-semibold text-white mb-4 text-sm tracking-wider'>CONTACT</h3>
+                                <h3 className='font-semibold mb-4 text-sm tracking-wider'>CONTACT</h3>
                                 <div className='space-y-3'>
-                                    <p className='font-light text-gray-50 text-sm hover:text-white transition-colors cursor-pointer'>+(254) 721 280 656</p>
-                                    <p className='font-light text-gray-50 text-sm hover:text-white transition-colors cursor-pointer'>info@suerdo.com</p>
-                                    <p className='font-light text-gray-50 text-sm'>Amboseli Rd, Nairobi - Kenya</p>
+                                    <p className='font-light  text-sm hover:transition-colors cursor-pointer'>+(254) 721 280 656</p>
+                                    <p className='font-light  text-sm hover:transition-colors cursor-pointer'>info@suerdo.com</p>
+                                    <p className='font-light  text-sm'>Amboseli Rd, Nairobi - Kenya</p>
                                 </div>
                             </div>
                             
                             <div>
-                                <h3 className='font-semibold text-white mb-4 text-sm tracking-wider'>QUICK LINKS</h3>
+                                <h3 className='font-semibold mb-4 text-sm tracking-wider'>QUICK LINKS</h3>
                                 <div className='space-y-3'>
-                                    <p className='font-light text-gray-50 text-sm hover:text-white transition-colors cursor-pointer'>About Us</p>
-                                    <p className='font-light text-gray-50 text-sm hover:text-white transition-colors cursor-pointer'>Gallery</p>
-                                    <p className='font-light text-gray-50 text-sm hover:text-white transition-colors cursor-pointer'>Reviews</p>
-                                    <p className='font-light text-gray-50 text-sm hover:text-white transition-colors cursor-pointer'>Experiences</p>
+                                    <p className='font-light  text-sm hover:transition-colors cursor-pointer'>About Us</p>
+                                    <p className='font-light  text-sm hover:transition-colors cursor-pointer'>Gallery</p>
+                                    <p className='font-light  text-sm hover:transition-colors cursor-pointer'>Reviews</p>
+                                    <p className='font-light  text-sm hover:transition-colors cursor-pointer'>Experiences</p>
                                 </div>
                             </div>
                             
                             <div>
-                                <h3 className='font-semibold text-white mb-4 text-sm tracking-wider'>LEGAL NOTICE</h3>
+                                <h3 className='font-semibold mb-4 text-sm tracking-wider'>LEGAL NOTICE</h3>
                                 <div className='space-y-3'>
-                                    <p className='font-light text-gray-50 text-sm hover:text-white transition-colors cursor-pointer'>Terms & Conditions</p>
-                                    <p className='font-light text-gray-50 text-sm hover:text-white transition-colors cursor-pointer'>Privacy Policy</p>
-                                    <p className='font-light text-gray-50 text-sm hover:text-white transition-colors cursor-pointer'>Cookie Policy</p>
+                                    <p className='font-light  text-sm hover:transition-colors cursor-pointer'>Terms & Conditions</p>
+                                    <p className='font-light  text-sm hover:transition-colors cursor-pointer'>Privacy Policy</p>
+                                    <p className='font-light  text-sm hover:transition-colors cursor-pointer'>Cookie Policy</p>
                                 </div>
                             </div>
                         </div>
@@ -1155,7 +1155,7 @@ const Home = () => {
 
                     {/* Copyright */}
                     <div className='text-center'>
-                        <p className='text-xs text-gray-50 font-light'>
+                        <p className='text-xs  font-light'>
                             © 2025 Mireva Resort. All Rights Reserved. | Developed by Smith-Odero.
                         </p>
                     </div>

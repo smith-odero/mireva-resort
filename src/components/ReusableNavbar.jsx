@@ -31,13 +31,13 @@ const ReusableNavbar = () => {
 
     return (
         <>
-        <nav className={`fixed top-0 w-full text-white transition-all duration-500 z-[99995] flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4 ${
+        <nav className={`fixed top-0 w-full transition-all duration-500 z-[99995] flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4 ${
                 scrollDirection === 'up' && lastScrollY > 50 
-                    ? 'translate-y-0 bg-black shadow-2xl h-[50px] lg:h-[60px]' 
+                    ? 'translate-y-0 bg-black/50 text-white backdrop-blur-xl  shadow-2xl h-[50px] lg:h-[60px]' 
                     : scrollDirection === 'down' && lastScrollY > 50
                         ? '-translate-y-full bg-transparent'
                         : lastScrollY <= 50
-                            ? 'translate-y-0 bg-black'
+                            ? 'translate-y-0 bg-white text-gray-800'
                             : '-translate-y-full bg-transparent'
             }`}>
             <div className='flex items-center gap-2'>
@@ -45,7 +45,7 @@ const ReusableNavbar = () => {
                         <img
                             src={images["logo.png"]}
                             alt="Logo"
-                            className='h-16 w-16 object-cover animate-breathe'
+                            className='h-12 w-12 bg-black rounded-xl object-cover animate-breathe'
                         />
                         {/* Breath animation elements from mouth */}
                         <div className='absolute top-6 left-12 transform -translate-x-1/2'>
@@ -54,11 +54,11 @@ const ReusableNavbar = () => {
                             <div className='breath-particle breath-3'></div>
                         </div>
                 </div>
-                <Link to='/'><h2 className='text-lg sm:text-xl font-light tracking-wider'>Mireva</h2></Link>
+                <Link to='/'><h2 className='text-lg sm:text-xl font-light  tracking-wider'>Mireva</h2></Link>
             </div>
 
             {/* Desktop Navigation */}
-            <div className='hidden md:flex items-center text-white gap-6 lg:gap-8 font-light'>
+            <div className='hidden md:flex items-center  gap-6 lg:gap-8 font-light'>
                 <Link to="/about"><p className='transition-opacity hover:opacity-70 cursor-pointer'>About</p></Link>
                 <Link to="/suites"><p className='transition-opacity hover:opacity-70 cursor-pointer'>Suite</p></Link>
                 <Link to="/dining"><p className='transition-opacity hover:opacity-70 cursor-pointer'>Dining</p></Link>
@@ -66,10 +66,8 @@ const ReusableNavbar = () => {
                 <Link to="/contact"><p className='transition-opacity hover:opacity-70 cursor-pointer'>Contact</p></Link>
             </div>
             <div className='hidden md:flex items-center gap-4'>
-                <button className='bg-white text-gray-900 backdrop-blur-3xl font-light cursor-pointer transition-all px-2 py-1.5 rounded-xl'>
-                    Sign In
-                </button>
-                <button className='border border-white px-2 py-1.5 rounded-xl'>
+                
+                <button className='bg-gray-50 border border-gray-800 text-gray-800 px-2 py-1.5 rounded-xl'>
                     BOOK NOW
                 </button>
             </div>
@@ -77,7 +75,7 @@ const ReusableNavbar = () => {
             {/* Menu Icon */}
             <button
                 onClick={toggleMobileMenu}
-                className='md:hidden text-white p-2'
+                className='md:hidden p-2'
             >
                 {isMobileMenuOpen ? <X className='h-6 w-6' /> : <MenuIcon className='h-6 w-6'/>}
             </button>
