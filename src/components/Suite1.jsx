@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useParams, useNavigate } from 'react-router-dom';
+import { useLocation, useParams, useNavigate, Link } from 'react-router-dom';
 import ReusableNavbar from './ReusableNavbar'
 import ReusableFooter from './ReusableFooter';
 import { Heart, Bed, Bath, Square, ChevronLeft, ChevronRight, ArrowLeft, Star, MapPin, Calendar, Wifi, Car, UtensilsCrossed, Dumbbell } from 'lucide-react';

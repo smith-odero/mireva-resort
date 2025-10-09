@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Calendar, MapPin, Users, Moon, Bed } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 function HotelBookingHero() {
   // State management for form inputs
@@ -10,6 +11,9 @@ function HotelBookingHero() {
   const [isAvailable, setIsAvailable] = useState(null);
   const [showBookingForm, setShowBookingForm] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [showSuccessContainer, setShowSuccessContainer] = useState(false);
+  
+  const navigate = useNavigate();
   
   // Booking form states
   const [name, setName] = useState('');
@@ -39,6 +43,39 @@ function HotelBookingHero() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  // Auto-hide availability alert after 6 seconds
+  useEffect(() => {
+    if (isAvailable !== null) {
+      const timer = setTimeout(() => {
+        setIsAvailable(null);
+      }, 6000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isAvailable]);
+
+  // Auto-hide payment success alert after 6 seconds
+  useEffect(() => {
+    if (paymentSuccess) {
+      const timer = setTimeout(() => {
+        setPaymentSuccess(false);
+      }, 6000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [paymentSuccess]);
+
+  // Navigate to home page after 8 seconds when showing success container
+  useEffect(() => {
+    if (showSuccessContainer) {
+      const timer = setTimeout(() => {
+        navigate('/');
+      }, 8000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showSuccessContainer, navigate]);
 
   // Handle search for availability
   const handleSearch = () => {
@@ -71,13 +108,34 @@ function HotelBookingHero() {
 
     // If all validations pass, simulate payment processing
     setTimeout(() => {
-      setPaymentSuccess(true);
+      setShowSuccessContainer(true);
       setShowBookingForm(false);
     }, 1500);
   };
 
   return (
     <div className="min-h-screen w-full relative">
+      <style jsx>{`
+        @keyframes draw {
+          0% { stroke-dasharray: 0 100; }
+          100% { stroke-dasharray: 100 0; }
+        }
+        @keyframes fade-in {
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade-in-delayed {
+          0% { opacity: 0; transform: translateY(20px); }
+          50% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+          animation: fade-in 1s ease-out;
+        }
+        .animate-fade-in-delayed {
+          animation: fade-in-delayed 2s ease-out;
+        }
+      `}</style>
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
@@ -90,7 +148,7 @@ function HotelBookingHero() {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 flex flex-col lg:flex-row-reverse items-center justify-between min-h-screen px-6 py-12 lg:px-20 gap-12">
+      <div className="relative z-10 flex flex-col lg:flex-row-reverse items-center justify-between min-h-screen px-2 py-8 sm:px-6 sm:py-12 lg:px-20 gap-12">
         
         {/* Left Section - Hero Text (Hidden on small screens) */}
         <div className="hidden lg:block text-white max-w-xl">
@@ -111,7 +169,7 @@ function HotelBookingHero() {
         </div>
 
         {/* Right Section - Booking Form */}
-        <div className="bg-black/40 bg-opacity-90 backdrop-blur-sm rounded-2xl p-8 w-full max-w-md lg:max-w-md shadow-2xl mx-auto">
+        <div className="bg-black/40 bg-opacity-90 backdrop-blur-sm rounded-2xl px-4 py-4  lg:p-8 w-full max-w-sm sm:max-w-md lg:max-w-md shadow-2xl mx-auto">
           <h4 className="text-white text-xl font-semibold mb-6 flex items-center gap-2">
             <Bed size={24} />
             {showBookingForm ? 'COMPLETE YOUR BOOKING' : 'Find your stay'}
@@ -137,7 +195,45 @@ function HotelBookingHero() {
             </div>
           )}
 
-          {!showBookingForm ? (
+          {showSuccessContainer ? (
+            // Success Container
+            <div className="flex flex-col items-center justify-center py-12 px-6 text-center">
+              {/* Animated Tick */}
+              <div className="mb-6 relative">
+                <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center animate-bounce">
+                  <svg 
+                    className="w-10 h-10 text-white animate-pulse" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={3} 
+                      d="M5 13l4 4L19 7" 
+                      className="animate-[draw_1.5s_ease-in-out]"
+                    />
+                  </svg>
+                </div>
+                <div className="absolute -inset-4 bg-green-400 rounded-full opacity-20 animate-ping"></div>
+              </div>
+
+              {/* Success Message */}
+              <div className="text-white">
+                <h3 className="text-2xl font-bold mb-4 animate-fade-in">
+                  Welcome to Mireva Resort!
+                </h3>
+                <p className="text-gray-200 text-lg mb-6 animate-fade-in-delayed">
+                  Your booking has been confirmed. We're excited to host you for an unforgettable experience!
+                </p>
+                <div className="flex items-center justify-center gap-2 text-sm text-gray-300">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <span>Redirecting to home page...</span>
+                </div>
+              </div>
+            </div>
+          ) : !showBookingForm ? (
             // Initial Search Form
             <>
               {/* Location Input */}
