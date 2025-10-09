@@ -6,22 +6,10 @@ const About = () => {
         <>
         <ReusableNavbar />
         
-            <div className="min-h-screen bg-white px-6 py-16 lg:px-20 lg:py-24 relative">
-            
-            {/* Decorative Purple Circle - Behind Everything */}
-            <div className="absolute left-1/2 top-32 lg:top-48
-                            transform -translate-x-1/2
-                            w-80 h-80 lg:w-80 lg:h-80 
-                            bg-gradient-to-br from-purple-400 to-purple-600 
-                            rounded-full 
-                            opacity-60 
-                            blur-3xl
-                            -z-0
-                            aspect-square">
-            </div>
+            <div className="min-h-screen bg-white px-4 py-12 sm:px-6 sm:py-16 lg:px-20 lg:py-24 relative">
 
             {/* Container */}
-            <div className="max-w-7xl mx-auto relative z-10">
+            <div className="max-w-7xl mx-auto pt-12 relative z-10">
                 
                 {/* Top Section - Title and Text */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-12">
@@ -53,11 +41,11 @@ const About = () => {
                 <div className="relative w-full">
 
                 {/* Main Image Container */}
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <div className="relative rounded-sm overflow-hidden shadow-xl">
                     <img
                     src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070"
                     alt="Misty mountains landscape"
-                    className="w-full h-64 lg:h-96 object-cover"
+                    className="w-full h-80 sm:h-96 lg:h-[500px] object-cover"
                     />
                     
                     {/* Gradient Overlay for better aesthetics */}
