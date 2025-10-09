@@ -12,6 +12,7 @@ function HotelBookingHero() {
   const [showBookingForm, setShowBookingForm] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [showSuccessContainer, setShowSuccessContainer] = useState(false);
+  const [validationAlert, setValidationAlert] = useState(null);
   
   const navigate = useNavigate();
   
@@ -77,6 +78,17 @@ function HotelBookingHero() {
     }
   }, [showSuccessContainer, navigate]);
 
+  // Auto-hide validation alert after 5 seconds
+  useEffect(() => {
+    if (validationAlert) {
+      const timer = setTimeout(() => {
+        setValidationAlert(null);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [validationAlert]);
+
   // Handle search for availability
   const handleSearch = () => {
     // Simulate availability check
@@ -90,19 +102,34 @@ function HotelBookingHero() {
     
     // Validate required fields
     if (!name.trim() || !phone.trim() || !paymentMode) {
-      alert('Please fill in all required fields (Name, Phone, and Payment Method).');
+      setValidationAlert({
+        type: 'error',
+        title: 'Required Fields Missing',
+        message: 'Please fill in all required fields (Name, Phone, and Payment Method).',
+    
+      });
       return;
     }
 
     // Additional validation for phone number (basic)
     if (phone.trim().length < 10) {
-      alert('Please enter a valid phone number.');
+      setValidationAlert({
+        type: 'error',
+        title: 'Invalid Phone Number',
+        message: 'Please enter a valid phone number with at least 10 digits.',
+
+      });
       return;
     }
 
     // Validate email format if provided
     if (email.trim() && !/^\S+@\S+\.\S+$/.test(email)) {
-      alert('Please enter a valid email address.');
+      setValidationAlert({
+        type: 'error',
+        title: 'Invalid Email',
+        message: 'Please enter a valid email address format.',
+    
+      });
       return;
     }
 
@@ -116,9 +143,13 @@ function HotelBookingHero() {
   return (
     <div className="min-h-screen w-full relative">
       <style jsx>{`
-        @keyframes draw {
-          0% { stroke-dasharray: 0 100; }
-          100% { stroke-dasharray: 100 0; }
+        @keyframes tick-draw {
+          0% { 
+            stroke-dashoffset: 20;
+          }
+          100% { 
+            stroke-dashoffset: 0;
+          }
         }
         @keyframes fade-in {
           0% { opacity: 0; transform: translateY(20px); }
@@ -128,6 +159,9 @@ function HotelBookingHero() {
           0% { opacity: 0; transform: translateY(20px); }
           50% { opacity: 0; transform: translateY(20px); }
           100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-tick-draw {
+          animation: tick-draw 1.2s ease-out forwards;
         }
         .animate-fade-in {
           animation: fade-in 1s ease-out;
@@ -162,14 +196,14 @@ function HotelBookingHero() {
           </p>
           
           {/* Book Now Button */}
-          <button className="flex items-center gap-3 bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+          <button className="flex items-center gap-3 bg-white text-black px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
             <Bed size={20} />
             Book Now
           </button>
         </div>
 
         {/* Right Section - Booking Form */}
-        <div className="bg-black/40 bg-opacity-90 backdrop-blur-sm rounded-2xl px-4 py-4  lg:p-8 w-full max-w-sm sm:max-w-md lg:max-w-md shadow-2xl mx-auto">
+        <div className="bg-black/40 bg-opacity-90 backdrop-blur-sm rounded-sm px-4 py-4  lg:p-8 w-full max-w-sm sm:max-w-md lg:max-w-md shadow-2xl mx-auto">
           <h4 className="text-white text-xl font-semibold mb-6 flex items-center gap-2">
             <Bed size={24} />
             {showBookingForm ? 'COMPLETE YOUR BOOKING' : 'Find your stay'}
@@ -195,14 +229,51 @@ function HotelBookingHero() {
             </div>
           )}
 
+          {/* Validation Alert */}
+          {validationAlert && (
+            <div className={`mb-6 p-4 rounded-xl border-l-4 shadow-lg transform transition-all duration-300 animate-pulse ${
+              validationAlert.type === 'error' 
+                ? 'bg-gradient-to-r from-red-50 to-red-100 border-red-500' 
+                : 'bg-gradient-to-r from-yellow-50 to-yellow-100 border-yellow-500'
+            }`}>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl flex-shrink-0 mt-0.5">{validationAlert.icon}</span>
+                <div className="flex-1">
+                  <h4 className={`font-semibold text-sm mb-1 ${
+                    validationAlert.type === 'error' ? 'text-red-800' : 'text-yellow-800'
+                  }`}>
+                    {validationAlert.title}
+                  </h4>
+                  <p className={`text-sm ${
+                    validationAlert.type === 'error' ? 'text-red-700' : 'text-yellow-700'
+                  }`}>
+                    {validationAlert.message}
+                  </p>
+                </div>
+                <button 
+                  onClick={() => setValidationAlert(null)}
+                  className={`flex-shrink-0 p-1 rounded-full hover:bg-opacity-20 transition-colors ${
+                    validationAlert.type === 'error' 
+                      ? 'text-red-600 hover:bg-red-600' 
+                      : 'text-yellow-600 hover:bg-yellow-600'
+                  }`}
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          )}
+
           {showSuccessContainer ? (
             // Success Container
             <div className="flex flex-col items-center justify-center py-12 px-6 text-center">
               {/* Animated Tick */}
               <div className="mb-6 relative">
-                <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center animate-bounce">
+                <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center">
                   <svg 
-                    className="w-10 h-10 text-white animate-pulse" 
+                    className="w-10 h-10 text-white" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -212,11 +283,14 @@ function HotelBookingHero() {
                       strokeLinejoin="round" 
                       strokeWidth={3} 
                       d="M5 13l4 4L19 7" 
-                      className="animate-[draw_1.5s_ease-in-out]"
+                      className="animate-tick-draw"
+                      style={{
+                        strokeDasharray: '20',
+                        strokeDashoffset: '20'
+                      }}
                     />
                   </svg>
                 </div>
-                <div className="absolute -inset-4 bg-green-400 rounded-full opacity-20 animate-ping"></div>
               </div>
 
               {/* Success Message */}

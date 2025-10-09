@@ -45,7 +45,7 @@ const About = () => {
                     <img
                     src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070"
                     alt="Misty mountains landscape"
-                    className="w-full h-80 sm:h-96 lg:h-[500px] object-cover"
+                    className="w-full h-[400px] sm:h-[400px] lg:h-[500px] object-cover"
                     />
                     
                     {/* Gradient Overlay for better aesthetics */}

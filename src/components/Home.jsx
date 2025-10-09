@@ -282,7 +282,7 @@ const Home = () => {
                         </div>
                     </div>
                     
-                    <><p className='font-light text-xs text-center mt-20 pt-2'>© 2025 Mireva Resort. All Rights Reserved.</p></>
+                    <><p className='font-light text-xs text-center mt-20 pt-2'>© 2025 Mireva Resort</p></>
 
                 </div>
             </div>
@@ -326,7 +326,7 @@ const Home = () => {
                         </div>
                         <div 
                             data-animate-id="hero-button"
-                            className={getAnimationClass("hero-button", 'flex mt-8 w-45 max-[480px]:w-35 text-center justify-center items-center gap-2 bg-white/5 backdrop-blur-xs text-white text-sm px-4 py-2 rounded-full border border-white/10 transform cursor-pointer hover-lift', 'animate-slide-in-left animate-delay-200')}
+                            className={getAnimationClass("hero-button", 'flex mt-8 w-45 max-[480px]:w-35 text-center justify-center items-center gap-2 bg-white/5 backdrop-blur-xs text-white text-sm px-4 py-2 rounded-xl border border-white/10 transform cursor-pointer hover-lift', 'animate-slide-in-left animate-delay-200')}
                         onClick={() => {
                             const nextSection = document.getElementById('next-section')
                             if (nextSection) {
