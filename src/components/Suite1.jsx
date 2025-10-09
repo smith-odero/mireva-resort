@@ -109,6 +109,24 @@ const Suite1 = () => {
                     
                     {/* Image Gallery - Full width on mobile */}
                     <div className="relative mb-8 -mx-4 sm:mx-0">
+                        <div className='px-4 sm:px-0'>
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
+                            <div className="flex-1">
+                                <h1 className="text-3xl md:text-4xl font-light font-serif tracking-wider text-gray-900 mb-2">
+                                    {property.title}
+                                </h1>
+                                <div className="flex items-center gap-2 text-gray-600">
+                                    <MapPin className="w-5 h-5" />
+                                    <span className="text-lg">{property.address}</span>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-2  px-4 py-2">
+                                <Star className="w-5 h-5 text-yellow-400 fill-current" />
+                                <span className="text-lg font-medium">4.8</span>
+                                <span className="text-gray-500">(124 reviews)</span>
+                            </div>
+                        </div>
+                        </div>
                         <div className="relative h-96 md:h-[500px] sm:rounded-sm overflow-hidden">
                             <img 
                                 src={propertyImages[currentImageIndex]}
@@ -167,18 +185,7 @@ const Suite1 = () => {
                             <div className="mb-6">
                                 <div className="flex items-start justify-between mb-4">
                                     <div>
-                                        <h1 className="text-3xl md:text-4xl font-light font-serif tracking-wider text-gray-900 mb-2">
-                                            {property.title}
-                                        </h1>
-                                        <div className="flex items-center gap-2 text-gray-600 mb-4">
-                                            <MapPin className="w-5 h-5" />
-                                            <span className="text-lg">{property.address}</span>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                                            <span className="text-lg font-medium">4.8</span>
-                                            <span className="text-gray-500">(124 reviews)</span>
-                                        </div>
+                                       {/* Reviews moved to header section above */}
                                     </div>
                                     {property.featured && (
                                         <div className="px-3 py-1 bg-blue-600 text-white text-sm rounded-full">
@@ -206,7 +213,7 @@ const Suite1 = () => {
 
                             {/* Description */}
                             <div className="mb-8">
-                                <h2 className="text-2xl font-semibold text-gray-900 mb-4">About this suite</h2>
+                                <h2 className="text-2xl font-semibold text-gray-900 mb-4">ABOUT THIS SUITE</h2>
                                 <p className="text-gray-700 leading-relaxed text-lg">
                                     {property.description || "Experience luxury in this beautifully appointed suite featuring modern amenities and stunning views. Perfect for guests seeking comfort and elegance in the heart of the city. The space offers a perfect blend of contemporary design and traditional comfort, making it ideal for both business and leisure travelers."}
                                 </p>
@@ -272,9 +279,11 @@ const Suite1 = () => {
                                     </div>
 
                                     {/* Book Button */}
-                                    <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors mb-4">
-                                        Reserve Now
-                                    </button>
+                                    <Link to="/booking">
+                                        <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors mb-4">
+                                            Reserve Now
+                                        </button>
+                                    </Link>
 
                                     <p className="text-sm text-gray-600 text-center">
                                         You won't be charged yet

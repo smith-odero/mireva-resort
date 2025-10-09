@@ -240,9 +240,11 @@ const Home = () => {
                     <button className={`text-gray-100 border border-white/40 bg-white/10 backdrop-blur-3xl px-2 py-1.5 rounded-xl font-light cursor-pointer transition-colors ${isScrolled ? "bg-white/90 text-gray-900 " : ""}`}>
                         Sign In
                     </button>
-                    <button className={`text-sm bg-white/10 text-white backdrop-blur-md border border-white/10  px-3 py-2 rounded-xl font-light hover:text-gray-100 hover:bg-white/5 transition-all ${isScrolled ? "bg-white/5 text-gray-900 " : ""}`}>
-                        BOOK NOW
-                    </button>
+                    <Link to="/booking">
+                        <button className={`text-sm bg-white/10 text-white backdrop-blur-md border border-white/10  px-3 py-2 rounded-xl font-light hover:text-gray-100 hover:bg-white/5 transition-all ${isScrolled ? "bg-white/5 text-gray-900 " : ""}`}>
+                            BOOK NOW
+                        </button>
+                    </Link>
                 </div>
 
                 {/* Mobile menu icon */}
@@ -274,7 +276,9 @@ const Home = () => {
                         </div>
                         <div className="pt-6 border-t border-white/20 space-y-4">
                         <button className="w-full text-center font-light text-gray-300 border border-gray-400 rounded-xl hover:text-white py-2 transition-colors duration-200">Sign In</button>
-                        <button className="w-full bg-white/85 text-black py-3 rounded-xl font-light hover:bg-gray-200 transition-colors duration-200">BOOK NOW</button>
+                        <Link to="/booking">
+                            <button className="w-full bg-white/85 text-black py-3 rounded-xl font-light hover:bg-gray-200 transition-colors duration-200">BOOK NOW</button>
+                        </Link>
                         </div>
                     </div>
                     
@@ -1047,13 +1051,15 @@ const Home = () => {
                             muted
                             playsInline
                         />
-                        <div 
-                            data-animate-id="make-most-book-btn"
-                            className={getAnimationClass("make-most-book-btn", 'absolute mt-[-140px] ml-18 md:ml-45 rounded-sm bg-blue-400/80 flex flex-col gap-3 items-center justify-center py-8 w-60', 'animate-scale-in animate-delay-600')}
-                        >
-                            <p>Book Your Stay</p>
-                            <ArrowRightCircleIcon />
-                        </div>
+                        <Link to="/booking">
+                            <div 
+                                data-animate-id="make-most-book-btn"
+                                className={getAnimationClass("make-most-book-btn", 'absolute mt-[-140px] ml-18 md:ml-45 rounded-sm bg-blue-400/80 flex flex-col gap-3 items-center justify-center py-8 w-60 cursor-pointer hover:bg-blue-500/80 transition-colors', 'animate-scale-in animate-delay-600')}
+                            >
+                                <p>Book Your Stay</p>
+                                <ArrowRightCircleIcon />
+                            </div>
+                        </Link>
                     </div>
                 </div>
 

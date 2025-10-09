@@ -6,6 +6,7 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Dining from './components/Dining'
 import Experiences from './components/Experiences'
+import Booking from './components/Booking'
 
 import './App.css'
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path='/suites' element={<Suite />} />
         <Route path='/suites/:propertyName' element={<Suite1 />} />
+        <Route path='/booking' element={<Booking />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/dining' element={<Dining />} />

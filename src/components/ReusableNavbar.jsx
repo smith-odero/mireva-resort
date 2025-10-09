@@ -67,9 +67,11 @@ const ReusableNavbar = () => {
             </div>
             <div className='hidden md:flex items-center gap-4'>
                 
-                <button className='bg-gray-50 border border-gray-800 text-gray-800 px-2 py-1.5 rounded-xl'>
-                    BOOK NOW
-                </button>
+                <Link to="/booking">
+                    <button className='bg-gray-50 border border-gray-800 text-gray-800 px-2 py-1.5 rounded-xl hover:bg-gray-100 transition-colors'>
+                        BOOK NOW
+                    </button>
+                </Link>
             </div>
 
             {/* Menu Icon */}
@@ -101,7 +103,9 @@ const ReusableNavbar = () => {
                         </div>
                         <div className="pt-6 border-t border-white/20 space-y-4">
                         <button className="w-full text-center font-light text-gray-300 border border-gray-400 rounded-xl hover:text-white py-2 transition-colors duration-200">Sign In</button>
-                        <button className="w-full bg-white/85 text-black py-3 rounded-xl font-light hover:bg-gray-200 transition-colors duration-200">BOOK NOW</button>
+                        <Link to="/booking">
+                            <button className="w-full bg-white/85 text-black py-3 rounded-xl font-light hover:bg-gray-200 transition-colors duration-200">BOOK NOW</button>
+                        </Link>
                         </div>
                     </div>
                     
