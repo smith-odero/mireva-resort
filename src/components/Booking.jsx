@@ -182,7 +182,7 @@ function HotelBookingHero() {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 flex flex-col lg:flex-row-reverse items-center justify-between min-h-screen px-2 py-8 sm:px-6 sm:py-12 lg:px-20 gap-12">
+      <div className="relative z-10 flex flex-col lg:flex-row-reverse items-center justify-center lg:justify-between min-h-screen px-2 py-8 sm:px-6 sm:py-12 lg:px-20 gap-12">
         
         {/* Left Section - Hero Text (Hidden on small screens) */}
         <div className="hidden lg:block text-white max-w-xl">
