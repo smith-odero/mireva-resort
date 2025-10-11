@@ -192,7 +192,7 @@ const Home = () => {
             <div className='relative h-[100vh] max-[480px]:h-[90vh] overflow-hidden'>
                 <div className='absolute inset-0 z-0'>
                     <img
-                        src={images["hotel.jpg"]}
+                        src={images["hero-100.jpg"]}
                         alt='nature'
                         className='w-full h-full object-cover'
                     />
