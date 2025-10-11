@@ -236,3 +236,190 @@
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   transition: box-shadow 0.3s ease;
 }
+
+/* Welcome Animation Styles */
+@keyframes bounce-slow {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fade-in-out {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2.5s ease-in-out infinite;
+}
+
+.animate-fade-in-out {
+  animation: fade-in-out 4s ease-in-out infinite;
+}
+
+.animation-delay-300 {
+  animation-delay: 0.3s;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+
+.animation-delay-900 {
+  animation-delay: 0.9s;
+}
+
+/* Mobile Fireworks Animation - Larger Size */
+.firework-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.firework {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.firework-1 {
+  animation: firework-burst-1 4s ease-out infinite;
+}
+
+.firework-2 {
+  animation: firework-burst-2 5s ease-out infinite;
+  animation-delay: 1.5s;
+}
+
+.firework-3 {
+  animation: firework-burst-3 3.5s ease-out infinite;
+  animation-delay: 2.8s;
+}
+
+.spark {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #ffd700 0%, #ffed4e 30%, #fbbf24 60%, transparent 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ffd700, 0 0 15px #ffd700, 0 0 20px #fbbf24;
+}
+
+/* Firework 1 - Large burst */
+.firework-1 .spark-1 { animation: spark-fly-1 2s ease-out infinite; }
+.firework-1 .spark-2 { animation: spark-fly-2 2s ease-out infinite; }
+.firework-1 .spark-3 { animation: spark-fly-3 2s ease-out infinite; }
+.firework-1 .spark-4 { animation: spark-fly-4 2s ease-out infinite; }
+.firework-1 .spark-5 { animation: spark-fly-5 2s ease-out infinite; }
+.firework-1 .spark-6 { animation: spark-fly-6 2s ease-out infinite; }
+.firework-1 .spark-7 { animation: spark-fly-7 2s ease-out infinite; }
+.firework-1 .spark-8 { animation: spark-fly-8 2s ease-out infinite; }
+
+/* Firework 2 - Medium burst */
+.firework-2 .spark-1 { animation: spark-fly-1 1.8s ease-out infinite; animation-delay: 1.5s; }
+.firework-2 .spark-2 { animation: spark-fly-2 1.8s ease-out infinite; animation-delay: 1.5s; }
+.firework-2 .spark-3 { animation: spark-fly-3 1.8s ease-out infinite; animation-delay: 1.5s; }
+.firework-2 .spark-4 { animation: spark-fly-4 1.8s ease-out infinite; animation-delay: 1.5s; }
+.firework-2 .spark-5 { animation: spark-fly-5 1.8s ease-out infinite; animation-delay: 1.5s; }
+.firework-2 .spark-6 { animation: spark-fly-6 1.8s ease-out infinite; animation-delay: 1.5s; }
+
+/* Firework 3 - Small burst */
+.firework-3 .spark-1 { animation: spark-fly-1 1.5s ease-out infinite; animation-delay: 2.8s; }
+.firework-3 .spark-2 { animation: spark-fly-2 1.5s ease-out infinite; animation-delay: 2.8s; }
+.firework-3 .spark-3 { animation: spark-fly-3 1.5s ease-out infinite; animation-delay: 2.8s; }
+.firework-3 .spark-4 { animation: spark-fly-4 1.5s ease-out infinite; animation-delay: 2.8s; }
+.firework-3 .spark-5 { animation: spark-fly-5 1.5s ease-out infinite; animation-delay: 2.8s; }
+
+/* Spark flight patterns - Larger distances */
+@keyframes spark-fly-1 {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  15% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(35px, -25px) scale(0); opacity: 0; }
+}
+
+@keyframes spark-fly-2 {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  15% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(28px, 30px) scale(0); opacity: 0; }
+}
+
+@keyframes spark-fly-3 {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  15% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(-30px, -18px) scale(0); opacity: 0; }
+}
+
+@keyframes spark-fly-4 {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  15% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(-25px, 28px) scale(0); opacity: 0; }
+}
+
+@keyframes spark-fly-5 {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  15% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(32px, 8px) scale(0); opacity: 0; }
+}
+
+@keyframes spark-fly-6 {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  15% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(-28px, -30px) scale(0); opacity: 0; }
+}
+
+@keyframes spark-fly-7 {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  15% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(12px, -35px) scale(0); opacity: 0; }
+}
+
+@keyframes spark-fly-8 {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  15% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(-18px, 25px) scale(0); opacity: 0; }
+}
+
+/* Firework burst timing */
+@keyframes firework-burst-1 {
+  0%, 85% { opacity: 0; }
+  15%, 70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes firework-burst-2 {
+  0%, 85% { opacity: 0; }
+  15%, 70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes firework-burst-3 {
+  0%, 85% { opacity: 0; }
+  15%, 70% { opacity: 1; }
+  100% { opacity: 0; }
+}

@@ -199,61 +199,135 @@ const Home = () => {
                     <div className='absolute inset-0 bg-gradient-to-r from-black/30 via-black/10 to-black/5'></div>
                 </div>
 
-            {/* Navigation */}
-            <nav className={`fixed top-0 w-full text-gray-50 transition-all duration-500 z-[99995] flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4 ${
+            {/* Mobile Fireworks Animation - Completely separate from navigation */}
+            <div className={`md:hidden fixed left-2 w-24 h-20 overflow-visible z-[99996] pointer-events-none ${
                 scrollDirection === 'up' && lastScrollY > 50 
-                    ? 'translate-y-0 bg-black/35 backdrop-blur-xl shadow-2xl h-[50px] lg:h-[60px]' 
+                    ? 'top-4' 
+                    : scrollDirection === 'down' && lastScrollY > 50
+                        ? '-top-20'
+                        : lastScrollY <= 50
+                            ? 'top-4'
+                            : '-top-20'
+            } transition-all duration-500`}>
+                <div className='firework-container'>
+                    {/* Firework 1 */}
+                    <div className='firework firework-1'>
+                        <div className='spark spark-1'></div>
+                        <div className='spark spark-2'></div>
+                        <div className='spark spark-3'></div>
+                        <div className='spark spark-4'></div>
+                        <div className='spark spark-5'></div>
+                        <div className='spark spark-6'></div>
+                        <div className='spark spark-7'></div>
+                        <div className='spark spark-8'></div>
+                    </div>
+                    
+                    {/* Firework 2 */}
+                    <div className='firework firework-2'>
+                        <div className='spark spark-1'></div>
+                        <div className='spark spark-2'></div>
+                        <div className='spark spark-3'></div>
+                        <div className='spark spark-4'></div>
+                        <div className='spark spark-5'></div>
+                        <div className='spark spark-6'></div>
+                    </div>
+                    
+                    {/* Firework 3 */}
+                    <div className='firework firework-3'>
+                        <div className='spark spark-1'></div>
+                        <div className='spark spark-2'></div>
+                        <div className='spark spark-3'></div>
+                        <div className='spark spark-4'></div>
+                        <div className='spark spark-5'></div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Navigation */}
+            <nav className={`fixed top-0 w-full text-gray-50 transition-all duration-500 z-[99995] ${
+                scrollDirection === 'up' && lastScrollY > 50 
+                    ? 'translate-y-0 bg-black/45 backdrop-blur-xl shadow-2xl' 
                     : scrollDirection === 'down' && lastScrollY > 50
                         ? '-translate-y-full bg-transparent'
                         : lastScrollY <= 50
                             ? 'translate-y-0 bg-transparent'
                             : '-translate-y-full bg-transparent'
             }`}>
-                <div className='flex items-center space-x-2'>
-                    <div className='relative'>
-                        <img
-                            src={images["logo.png"]}
-                            alt="Logo"
-                            className='h-16 w-16 object-cover animate-breathe'
-                        />
-                        {/* Breath animation elements from mouth */}
-                        <div className='absolute top-6 left-12 transform -translate-x-1/2'>
-                            <div className='breath-particle breath-1'></div>
-                            <div className='breath-particle breath-2'></div>
-                            <div className='breath-particle breath-3'></div>
+                {/* Desktop Navigation Layout */}
+                <div className='hidden md:flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4'>
+                    {/* Desktop Logo and Brand (Left) */}
+                    <div className='flex items-center space-x-2'>
+                        <div className='relative'>
+                            <img
+                                src={images["logo.png"]}
+                                alt="Logo"
+                                className='h-16 w-16 object-cover animate-breathe'
+                            />
+                            {/* Breath animation elements from mouth */}
+                            <div className='absolute top-6 left-12 transform -translate-x-1/2'>
+                                <div className='breath-particle breath-1'></div>
+                                <div className='breath-particle breath-2'></div>
+                                <div className='breath-particle breath-3'></div>
+                            </div>
                         </div>
+                        <Link to='/' ><h2 className='text-lg sm:text-xl font-light tracking-wider'>Mireva.</h2> </Link>
                     </div>
-                    <Link to='/' ><h2 className='text-lg sm:text-xl font-light tracking-wider'>Mireva.</h2> </Link>
-                </div>
 
-                {/* Desktop navigation */}
-                <div className='hidden md:flex items-center space-x-6 lg:space-x-8 font-light'>
-                    <Link to='/about' className='transition-opacity hover:opacity-70'>About</Link>
-                    <Link to='/suites' className='transition-opacity hover:opacity-70'>Suites</Link>
-                    <Link to='/dining' className='transition-opacity hover:opacity-70'>Dining</Link>
-                    <Link to='/experience' className='transition-opacity hover:opacity-70'>Experience</Link>
-                    <Link to='/contact' className='transition-opacity hover:opacity-70'>Contact</Link>
-                </div>
+                    {/* Desktop navigation */}
+                    <div className='flex items-center space-x-6 lg:space-x-8 font-light'>
+                        <Link to='/about' className='transition-opacity hover:opacity-70'>About</Link>
+                        <Link to='/suites' className='transition-opacity hover:opacity-70'>Suites</Link>
+                        <Link to='/dining' className='transition-opacity hover:opacity-70'>Dining</Link>
+                        <Link to='/experience' className='transition-opacity hover:opacity-70'>Experience</Link>
+                        <Link to='/contact' className='transition-opacity hover:opacity-70'>Contact</Link>
+                    </div>
 
-                {/* Desktop Auth Buttons */}
-                <div className='hidden md:flex items-center space-x-4 '>
-                    <button className={`text-gray-100 border border-white/40 bg-white/10 backdrop-blur-3xl px-2 py-1.5 rounded-xl font-light cursor-pointer transition-colors ${isScrolled ? "bg-white/90 text-gray-900 " : ""}`}>
-                        Sign In
-                    </button>
-                    <Link to="/booking">
-                        <button className={`text-sm bg-white/10 text-white backdrop-blur-md border border-white/10  px-3 py-2 rounded-xl font-light hover:text-gray-100 hover:bg-white/5 transition-all ${isScrolled ? "bg-white/5 text-gray-900 " : ""}`}>
-                            BOOK NOW
+                    {/* Desktop Auth Buttons */}
+                    <div className='flex items-center space-x-4'>
+                        <button className={`text-gray-100 border border-white/40 bg-white/10 backdrop-blur-3xl px-2 py-1.5 rounded-xl font-light cursor-pointer transition-colors ${isScrolled ? "bg-white/90 text-gray-900 " : ""}`}>
+                            Sign In
                         </button>
-                    </Link>
+                        <Link to="/booking">
+                            <button className={`text-sm bg-white/10 text-white backdrop-blur-md border border-white/10  px-3 py-2 rounded-xl font-light hover:text-gray-100 hover:bg-white/5 transition-all ${isScrolled ? "bg-white/5 text-gray-900 " : ""}`}>
+                                BOOK NOW
+                            </button>
+                        </Link>
+                    </div>
                 </div>
 
-                {/* Mobile menu icon */}
-                <button
-                    onClick={toggleMobileMenu}
-                    className='md:hidden text-white p-2'
-                >
-                    {isMobileMenuOpen ? <X className='h-6 w-6' /> : <MenuIcon className='h-6 w-6'/>}
-                </button>
+                {/* Mobile Navigation Layout */}
+                <div className='md:hidden flex items-center justify-between px-4 py-4 relative'>
+                    {/* Mobile Spacer (Left) */}
+                    <div className='w-10 h-10'></div>
+
+                    {/* Mobile Centered Logo and Brand */}
+                    <div className='flex flex-col items-center'>
+                        <div className='relative'>
+                            <img
+                                src={images["logo.png"]}
+                                alt="Logo"
+                                className='h-12 w-12 object-cover animate-breathe'
+                            />
+                            {/* Breath animation elements from mouth */}
+                            <div className='absolute top-3 left-8 transform -translate-x-1/2'>
+                                <div className='breath-particle breath-1'></div>
+                                <div className='breath-particle breath-2'></div>
+                                <div className='breath-particle breath-3'></div>
+                            </div>
+                        </div>
+                        <Link to='/' ><h2 className='text-sm font-light tracking-wider mt-1'>Mireva</h2> </Link>
+                    </div>
+
+                    {/* Mobile Menu Icon (Right) */}
+                    <button
+                        onClick={toggleMobileMenu}
+                        className='text-white p-2'
+                    >
+                        {isMobileMenuOpen ? <X className='h-6 w-6' /> : <MenuIcon className='h-6 w-6'/>}
+                    </button>
+                </div>
+
+
             </nav>
 
             {/* Mobile Menu */}
